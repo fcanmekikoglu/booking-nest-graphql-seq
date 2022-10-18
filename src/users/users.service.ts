@@ -5,6 +5,7 @@ import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { User } from './entities/user.entity';
 import { UserInputError } from 'apollo-server-express';
+import { SignupInput } from 'src/auth/dto/signup.input';
 
 @Injectable()
 export class UsersService {
@@ -14,19 +15,9 @@ export class UsersService {
   ) {}
 
   //move into auth
-  create(createUserInput: CreateUserInput): Promise<User> {
-    try {
-      const { username, password, email } = createUserInput;
-      return this.userModel.create({
-        username,
-        password,
-        email,
-      });
-    } catch (e) {
-      throw new UserInputError(e);
-    }
+  async create(signupInput: SignupInput): Promise<any> {
+    return await this.userModel.create({ signupInput });
   }
-
   //protect
   findAll() {
     return this.userModel.findAll();
