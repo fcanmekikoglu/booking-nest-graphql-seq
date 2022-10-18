@@ -32,8 +32,10 @@ export class UsersService {
     return this.userModel.findAll();
   }
 
-  findOne(id) {
-    return this.userModel.findByPk(id);
+  findByUsername(username: string) {
+    return this.userModel.findOne({
+      where: { username },
+    });
   }
 
   update(id: number, updateUserInput: UpdateUserInput) {
