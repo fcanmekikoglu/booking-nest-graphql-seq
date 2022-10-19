@@ -19,15 +19,15 @@ export class User extends Model {
   })
   id: string;
 
-  @Field()
+  @Field({ nullable: false })
   @Column({ unique: true })
   username: string;
 
-  @Field()
+  @Field({ nullable: false })
   @Column
   password: string;
 
-  @Field()
+  @Field({ nullable: false })
   @Column({ unique: true })
   email: string;
 }

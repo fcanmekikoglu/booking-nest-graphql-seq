@@ -1,11 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { GraphQLError } from 'graphql';
-import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { User } from './entities/user.entity';
-import { UserInputError } from 'apollo-server-express';
-import { SignupInput } from 'src/auth/dto/signup.input';
 
 @Injectable()
 export class UsersService {
@@ -15,8 +11,8 @@ export class UsersService {
   ) {}
 
   //move into auth
-  async create(signupInput: SignupInput): Promise<any> {
-    return await this.userModel.create({ signupInput });
+  async create(signupInput): Promise<User> {
+    return await this.userModel.create(signupInput);
   }
   //protect
   findAll() {
