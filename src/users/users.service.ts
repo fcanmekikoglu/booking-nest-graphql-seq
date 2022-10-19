@@ -15,8 +15,8 @@ export class UsersService {
     return await this.userModel.create(signupInput);
   }
   //protect
-  findAll() {
-    return this.userModel.findAll();
+  async findAll() {
+    return await this.userModel.findAll();
   }
 
   findByUsername(username: string) {

@@ -9,7 +9,7 @@ import {
 } from 'sequelize-typescript';
 
 @ObjectType()
-@Table
+@Table({ timestamps: false })
 export class User extends Model {
   @Field()
   @PrimaryKey
