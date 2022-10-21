@@ -2,11 +2,25 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Booking {
+  id: String!
+  resDate: DateTime!
+  ownerId: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type User {
   id: String!
   username: String!
   password: String!
   email: String!
+  bookings: [Booking!]
   createdAt: String!
   updatedAt: String!
 }
@@ -18,6 +32,8 @@ type LoginResponse {
 
 type Query {
   users: [User!]!
+  bookings: [Booking!]!
+  booking(id: Int!): Booking!
 }
 
 type Mutation {
@@ -25,6 +41,9 @@ type Mutation {
   removeUser(id: Int!): User!
   signup(signupInput: SignupInput!): User!
   login(loginUserInput: LoginUserInput!): LoginResponse!
+  createBooking(createBookingInput: CreateBookingInput!): Booking!
+  updateBooking(updateBookingInput: UpdateBookingInput!): Booking!
+  removeBooking(id: Int!): Booking!
 }
 
 input UpdateUserInput {
@@ -43,4 +62,15 @@ input SignupInput {
 input LoginUserInput {
   username: String!
   password: String!
+}
+
+input CreateBookingInput {
+  resDate: DateTime!
+  ownerId: String!
+}
+
+input UpdateBookingInput {
+  resDate: DateTime
+  ownerId: String
+  id: Int!
 }

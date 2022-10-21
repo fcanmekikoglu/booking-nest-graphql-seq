@@ -1,4 +1,5 @@
 import { ObjectType, Field } from '@nestjs/graphql';
+import { Booking } from 'src/bookings/entities/booking.entity';
 
 @ObjectType()
 export class User {
@@ -13,6 +14,9 @@ export class User {
 
   @Field({ nullable: false })
   email: string;
+
+  @Field((type) => [Booking], { nullable: true })
+  bookings: Booking[];
 
   @Field()
   createdAt: string;

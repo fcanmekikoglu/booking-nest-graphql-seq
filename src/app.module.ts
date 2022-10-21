@@ -9,6 +9,7 @@ import { join } from 'path';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { AuthModule } from './auth/auth.module';
+import { BookingsModule } from './bookings/bookings.module';
 
 dotenv.config();
 
@@ -32,6 +33,7 @@ dotenv.config();
       synchronize: true,
     }),
     AuthModule,
+    BookingsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
