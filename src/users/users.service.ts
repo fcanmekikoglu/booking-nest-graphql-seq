@@ -2,16 +2,17 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { UpdateUserInput } from './dto/update-user.input';
 import { User } from './entities/user.entity';
+import { UserModel } from './models/user.model';
 
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectModel(User)
-    private readonly userModel: typeof User,
+    @InjectModel(UserModel)
+    private userModel: typeof UserModel,
   ) {}
 
   //move into auth
-  async create(signupInput): Promise<User> {
+  async create(signupInput) {
     return await this.userModel.create(signupInput);
   }
   //protect
