@@ -10,20 +10,21 @@ export class BookingsService {
     @InjectModel(BookingsModel)
     private bookingModel: typeof BookingsModel,
   ) {}
+
   async create(createBookingInput) {
     console.log(createBookingInput);
     return await this.bookingModel.create(createBookingInput);
   }
 
-  findAll() {
-    return `This action returns all bookings`;
+  async findAll() {
+    return await this.bookingModel.findAll();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} booking`;
+  async findOne(id: string) {
+    return await this.bookingModel.findByPk(id);
   }
 
-  update(id: number, updateBookingInput: UpdateBookingInput) {
+  update(id: string, updateBookingInput: UpdateBookingInput) {
     return `This action updates a #${id} booking`;
   }
 

@@ -17,6 +17,7 @@ scalar DateTime
 
 type User {
   id: String!
+  role: String
   username: String!
   password: String!
   email: String!
@@ -50,6 +51,7 @@ input UpdateUserInput {
   username: String
   password: String
   email: String
+  role: String
   id: Int!
 }
 
@@ -70,7 +72,7 @@ input CreateBookingInput {
 }
 
 input UpdateBookingInput {
-  resDate: DateTime
+  resDate: DateTime!
   ownerId: String
-  id: Int!
+  id: String!
 }
